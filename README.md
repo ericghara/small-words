@@ -12,13 +12,17 @@ It quickly became apparent that calculating the number of permutations for these
 ```
 n!/(n₂!⋅n₂₂!)
 ```
-Using this method the permutations of 222 for example can be broken down into the number of permutations of 2, 2, 2 and the number of permutations of 22, 2.
+Using this method the permutations of 2222 for example can be broken down into the number of permutations of (2, 2, 2, 2), (22, 2, 2) and (22,22).
 ```
-(2,2,2): 3!/(3!⋅0!) = 1
+(2,2,2,2): 4!/(4!⋅0!) = 1
 
-(2,22): 2!/(1!⋅1!) = 2
+ (22,2,2): 3!/(2!⋅1!) = 3
+
+  (22,22): 1!/(1!⋅0!) = 1
+
+                  Sum = 5
 ```
-Using this technique the number of permutations of extremely long repeats can be easily calculated despite the logarithmic increase in complexity above repeat lengths of ~5.
+Using this technique the increase in time for calculating the number of permutations increases linearly as the length of the repeat block increases, despite the logrithmic increase in number of permutations.
 
 ## Results
 <table>
