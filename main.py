@@ -3,15 +3,15 @@ from math import factorial
 import matplotlib.pyplot as plt
 
 def combo2(lnth):
-    twotwo = 0 # num of 22s
+    twtytwo = 0 # num of 22s
     perms = 0
     # iterate quantities of 2's and 22's to permutate
-    while 2*twotwo <= lnth:
-        twos = lnth-twotwo*2
-        n = twos+twotwo
+    while 2*twtytwo <= lnth:
+        twos = lnth-twtytwo*2
+        n = twos+twtytwo
         # formula n!/(n₂!*n₂₂!) ; ie permutation with repititions formula for 2 types of objects  
-        perms +=int( factorial(n)/( factorial(twos)*factorial(twotwo) ) )
-        twotwo +=1
+        perms +=int( factorial(n)/( factorial(twos)*factorial(twtytwo) ) )
+        twtytwo +=1
     return perms
 
 # iterate 1-6   
