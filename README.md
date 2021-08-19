@@ -26,6 +26,6 @@ Using this technique the number of permutations of extremely long repeats can be
       <th><a href=https://user-images.githubusercontent.com/87097441/130053642-d183c08f-9a2a-4c6d-9640-919c99cd4c82.png><img src=https://user-images.githubusercontent.com/87097441/130053642-d183c08f-9a2a-4c6d-9640-919c99cd4c82.png alt="Graph" height="auto" width="auto"></a></th>
     </tr>
     <tr>
-  <td align="center"><b>The number of potential word permutations of cyphertext block containing <i>n</i> 2's</b><br><i>Note:</i> top figure graphed on a linear scale with the bottom on a logarithmic</td>
+  <td align="center"><b>The number of potential word permutations of cyphertext block containing <i>n</i> 2's</b><br><i>Note:</i> top figure graphed on a linear and the bottom on a logarithmic scale</td>
     </tr>
 </table>
