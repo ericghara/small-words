@@ -21,19 +21,19 @@ Using this method the permutations of 2222 for example can be broken down into t
 Using this technique the increase in time for calculating the number of permutations increases linearly as the length of the repeat block increases, despite the logrithmic increase in number of permutations.
 
 ## Results
-<table>
+<table align="center">
     <tr>
-      <th><a href=https://user-images.githubusercontent.com/87097441/130053642-d183c08f-9a2a-4c6d-9640-919c99cd4c82.png><img src=https://user-images.githubusercontent.com/87097441/130053642-d183c08f-9a2a-4c6d-9640-919c99cd4c82.png alt="Graph" height="auto" width="auto"></a></th>
+      <th><a href=https://user-images.githubusercontent.com/87097441/130302256-19869ee4-446b-4c28-b0f4-17e99ed519b8.png><img src=https://user-images.githubusercontent.com/87097441/130302256-19869ee4-446b-4c28-b0f4-17e99ed519b8.png alt="Graph" height="auto" width="auto"></a></th>
     </tr>
     <tr>
   <td align="center"><b>The number of potential word permutations of cyphertext block containing <i>n</i> 2's</b><br><i>Note:</i> top figure graphed on a linear and the bottom on a logarithmic scale</td>
     </tr>
 </table>
 
-## Further Optimization(?)
-The solution above is a summation, which has a time complexity that is linearly correlated to the magnitude of its input.  I do not believe it is possible to further simplify this solution (although please contact me if you can!) but it should be possible to develop a reasonable approximation.  To this end a nonlinear least squares fit was calculated (scipy) using a model exponential fucnction.  The training set was 1-30 repeats.  A wider training set could not be used due to the inability of scipy's backend to support >64 bit float precision.  Despite this, the fit proved quite acceptable even far outside the training set.
+## Approximation
+The solution above is a summation, which has a time complexity that is linearly correlated to the magnitude of its input.  I do not believe it is possible to further simplify this solution (although please contact me if you can!) but it should be possible to develop a reasonable approximation.  To this end a nonlinear least squares fit was calculated (scipy) using a model exponential function.  The training set was 1-30 repeats.  A wider training set could not be used due to the inability of scipy's backend to support >64 bit float precision.  Despite this, the fit proved quite acceptable even far outside the training set.
 
-<table>
+<table align="center">
     <tr>
         <td><a href=ttps://user-images.githubusercontent.com/87097441/130301665-4b1cee9a-087c-4dd7-88e9-5c612d1b21cd.png><img src=https://user-images.githubusercontent.com/87097441/130301665-4b1cee9a-087c-4dd7-88e9-5c612d1b21cd.png alt="Training Set" height="auto" width="475" /></a></td>
         <td><a href=https://user-images.githubusercontent.com/87097441/130301691-18f2f98b-325b-4ac9-b03b-488dad145608.png> <img src=https://user-images.githubusercontent.com/87097441/130301691-18f2f98b-325b-4ac9-b03b-488dad145608.png alt="Outside Training set" height="auto" width="475"/></a></td>
@@ -48,14 +48,14 @@ The solution above is a summation, which has a time complexity that is linearly 
  </tr>
     <tr>
         <td align="center">Residuals--deviation from predicted</td>
-        <td align="center">R² Accross increasing prediction ranges</td>
+        <td align="center">R² Across increasing prediction ranges</td>
     </tr>
 </table>
 
-Visually the quality of the fit is difficult to assess due to the shear range of the y values (top 2 graphs).  Looking at the residuals shows us that within the training set, the fit is very good, displaying apparantly random deviation from the actual value.  Outside of the training set the fit of the calculated function can only be called acceptable, with a nonrandom deviation from expected.  Despite this R² analysis shows an accurate approximation in the range of 1-100 character lengths.  With fitting methods that support larger numbers certainly better fits can be used, but I will leave this pusuit to someone else :).
+Visually the quality of the fit is difficult to assess due to the shear range of the y values (top 2 graphs).  Looking at the residuals shows us that within the training set, the fit is very good, displaying apparently random deviation from the actual value.  Outside of the training set the fit of the calculated function can only be called acceptable, with a nonrandom deviation from expected.  Despite this R² analysis shows an accurate approximation in the range of 1-100 character lengths.  With fitting methods that support larger numbers certainly better fits can be used, but I will leave this pursuit to someone else :).
 
 ## Conclusion
-If you want to rigorously calculate the number of permutations of 2 and 22 in a repeating string, breaking down the problem into discrete permutation with repition problems provides a very quick solution with O(x) time complexity.  If you seek an O(1) solution and can accept an approximation and the limitation to strings <90 characters this approximation is a good option:
+If you want to rigorously calculate the number of permutations of 2 and 22 in a repeating string, breaking down the problem into discrete permutation with repetition problems provides a very quick solution with O(x) time complexity.  If you seek an O(1) solution and can accept an approximation and the limitation to strings <90 characters this approximation is a good option:
 
 <p align="center"><code>A⋅eᴮⁿ-C</code></p align="center">
 <p align="center"><code>A = 0.72360693 B = 0.48121182 C = 0.00476934</code></p align="center">
