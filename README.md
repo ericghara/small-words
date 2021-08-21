@@ -18,7 +18,7 @@ Using this method the permutations of 2222 for example can be broken down into t
 <p align="center"><code>(22,22): 1!/(1!⋅0!) = 1</code></p align="center">
 <p align="center"><code>Sum = 5</code></p align="center">
 
-Using this technique the increase in time for calculating the number of permutations increases linearly as the length of the repeat block increases, despite the logrithmic increase in number of permutations.
+Using this technique the increase in time for calculating the number of permutations increases linearly as the length of the repeat block increases, despite the exponential increase in number of permutations.
 
 ## Results
 <table align="center">
@@ -40,7 +40,7 @@ The solution above is a summation, which has a time complexity that is linearly 
     </tr>
     <tr>
         <td align="center">Comparison of actual values to those calculated from exponential fit</td>
-        <td align="center">Comparison of actual to fit beyond confines of training set</td>
+        <td align="center">Comparison of actual to fitted, within and beyond the training set</td>
     </tr>
     <tr>
         <td><a href=https://user-images.githubusercontent.com/87097441/130301767-722e135f-f647-4dc5-b99b-3c848c55898c.png> <img src=https://user-images.githubusercontent.com/87097441/130301767-722e135f-f647-4dc5-b99b-3c848c55898c.png alt="Residuals" height="auto" width="475"/></a></td>
@@ -52,10 +52,10 @@ The solution above is a summation, which has a time complexity that is linearly 
     </tr>
 </table>
 
-Visually the quality of the fit is difficult to assess due to the shear range of the y values (top 2 graphs).  Looking at the residuals shows us that within the training set, the fit is very good, displaying apparently random deviation from the actual value.  Outside of the training set the fit of the calculated function can only be called acceptable, with a nonrandom deviation from expected.  Despite this R² analysis shows an accurate approximation in the range of 1-100 character lengths.  With fitting methods that support larger numbers certainly better fits can be used, but I will leave this pursuit to someone else :).
+Visually the quality of the fit is difficult to assess due to the shear range of the y values (top 2 graphs).  Looking at the residuals (bottom graphs) shows us that within the training set, the fit is very good, displaying apparently random deviation from the actual value.  Outside of the training set the fit of the calculated function can only be called acceptable, with a nonrandom deviation from expected.  Despite this, R² analysis shows an accurate approximation in the range of 1-90 repeat character lengths.  With fitting methods that support larger numbers or experimenting with other models certainly better fits are possible, but I will leave this pursuit to someone else :).
 
 ## Conclusion
-If you want to rigorously calculate the number of permutations of 2 and 22 in a repeating string, breaking down the problem into discrete permutation with repetition problems provides a very quick solution with O(x) time complexity.  If you seek an O(1) solution and can accept an approximation and the limitation to strings <90 characters this approximation is a good option:
+If you want to rigorously calculate the number of permutations of 2 and 22 or 1 and 11 in a repeating string, breaking down the problem into discrete permutation with repetition problems provides a very quick solution with O(x) time complexity.  If you seek an O(1) solution and can accept an approximation and the limitation to strings <90 characters this approximation is reasonable:
 
 <p align="center"><code>A⋅eᴮⁿ-C</code></p align="center">
 <p align="center"><code>A = 0.72360693 B = 0.48121182 C = 0.00476934</code></p align="center">
