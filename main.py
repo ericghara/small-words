@@ -1,4 +1,4 @@
-from math import factorial
+from math import factorial, prod
 import matplotlib.pyplot as plt
 import scipy.optimize as optimize
 import numpy as np
@@ -6,6 +6,8 @@ import numpy as np
 # note delete if running code outside of Jupyter notebook
 
 def combo2(lnth):
+    # Depreciated.  opt_combo2 offers ~ equivilent perofmrance for small lnth 
+    # and significantly improved performance for large lnth
     twtytwo = 0 # num of 22s
     perms = 0
     # iterate quantities of 2's and 22's to permutate
@@ -15,6 +17,28 @@ def combo2(lnth):
         # formula n!/(n₂!*n₂₂!) ; ie permutation with repititions formula for 2 types of objects  
         perms +=int( factorial(n)/( factorial(twos)*factorial(twtytwo) ) )
         twtytwo +=1
+    return perms
+
+def opt_combo2(lnth):
+    # Optimized combo2
+    # Optimization of this formula a!/(b₂!*c₂₂!)
+    # Where a is always > b or c
+    b = 0 # number of two character letters
+    perms = 0 # number of permutations
+    while 2*b <= lnth:
+        c = lnth-2*b
+        a = b+c
+        # factors a!/(b!*c!) to reduce number of factorial operations
+        if b >= c:
+            #factor out b
+            factor = b
+            denom = factorial(c)
+        else:
+            #facor out c
+            factor = c
+            denom = factorial(b)
+        perms +=prod(range(a,factor,-1))/denom
+        b +=1
     return perms
 
 ## Make Plots ##
