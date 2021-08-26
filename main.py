@@ -2,7 +2,7 @@ from math import factorial, prod
 import matplotlib.pyplot as plt
 import scipy.optimize as optimize
 import numpy as np
-%matplotlib widget 
+#%matplotlib widget 
 # note delete if running code outside of Jupyter notebook
 
 def combo2(lnth):
@@ -67,6 +67,7 @@ ax2.set_yscale("log")
 ax2.set_ylabel(ylabel)
 ax2.set_xlabel(xlabel)
 ax2.set_xlim((1,100))
+f.show()
 
 ## Fit
 def exponential(x,A,B, C):
@@ -90,7 +91,7 @@ plt.plot(x, yEXP, 'r-',ls='--', label="Exponential Fit")
 plt.yscale("Log")
 plt.xlim((1,30))
 plt.legend()
-plt.show()
+#plt.show()
 
 #Optimized Values
 print("Values",popt)
@@ -108,6 +109,8 @@ plt.legend()
 plt.xlim((1,100))
 plt.ylabel(ylabel)
 plt.xlabel(xlabel)
+#plt.show()
+
 
 # Residuals
 residuals = np.hstack((y,yOut))-np.hstack((yEXP, yOut_EXP)) #data-fit
@@ -118,6 +121,7 @@ ylabel = 'Residual (deviation from predicted)'
 plt.ylabel(ylabel)
 plt.xlabel(xlabel)
 plt.xlim((1,100))
+#plt.show()
 
 # Residuals - weighted
 #wResiduals = residuals/np.hstack((y,yOut))*100
@@ -154,3 +158,5 @@ ylabel = 'R²'
 plt.ylabel(ylabel)
 plt.xlabel("Data Range (0 to n)")
 plt.xlim((1,100))
+plt.show()
+
